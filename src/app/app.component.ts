@@ -9,6 +9,9 @@ import Icon from 'ol/style/Icon';
 import OSM from 'ol/source/OSM';
 import * as olProj from 'ol/proj';
 import TileLayer from 'ol/layer/Tile';
+import { Address, UserModel } from './user.model';
+import { HttpClient } from '@angular/common/http';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -16,20 +19,40 @@ import TileLayer from 'ol/layer/Tile';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  imageURL = "/assets/user_avatar.png"
 
-  firstName = "Sterling";
-  lastName = "Lockwood";
-  phone = "716-555-6789";
-  email = "sterling@strayos.com";
-  address = "Building #1, Buffalo, New York - 14203";
-  lat = 42.880614;
-  lon = -78.8781409;
+  user: UserModel;
+  imageURL: String;
+  firstName: String;
+  lastName: String;
+  phone: String;
+  email: String;
+  address: Address;
+  lat: number;
+  lon: number;
+  bio: string;
 
-  bio = "I am the very model of a modern Major-General, I've information vegetable, animal, and mineral, I know the kings of England, and I quote the fights historical, From Marathon to Waterloo, in order categorical; I'm very well acquainted too with matters mathematical, I understand equations, both the simple and quadratical, About binomial theorem I'm teeming with a lot o' news--- With many cheerful facts about the square of the hypotenuse.";
+  constructor(private service: UserService) { }
 
   ngOnInit(){
-    this.map = new Map({
+    this.service.getUser().subscribe(data => this.updateData(data));
+  }
+
+  updateData(model: UserModel) {
+    this.imageURL = model.avatarUrl;
+    this.firstName = model.firstName;
+    this.lastName = model.lastName;
+    this.phone = model.phone;
+    this.email = model.email;
+    this.bio = model.bio;
+
+    this.address = model.address;
+    this.lat = +this.address.coordinates.split(",",2)[0];
+    this.lon = +this.address.coordinates.split(",",2)[1];
+    this.updateMap()
+  }
+
+  updateMap() {
+    new Map({
       target: 'map',
       layers: [
         new TileLayer({
@@ -38,8 +61,12 @@ export class AppComponent {
       ],
       view: new View({
         center: olProj.fromLonLat([this.lon, this.lat]),
-        zoom: 11
+        zoom: 12
       })
     });
+  }
+
+  getAddressString() {
+    return this.address.building + ", " + this.address.city + ", " + this.address.state + " - " + this.address.zipCode
   }
 }
