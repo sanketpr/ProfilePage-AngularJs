@@ -1,0 +1,84 @@
+html {
+    background-color: #D8D8D8;
+}
+
+.heading {
+    width: 100%;
+    height: 100px;
+    background-color: #111;
+}
+
+.content {
+    padding: 8px 4px 4px 4px;
+    font-family: "Source Sans Pro";
+}
+
+.profile {
+height: 100%; 
+width: 500px; 
+float: left; 
+z-index: 1; 
+background-color: #111;
+overflow-x: hidden;
+margin-bottom: 10px;
+}
+
+.profile-pic-image{
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+    border: 8px solid #6690c4;
+}
+
+.profile a {
+padding: 24px 8px 0px 16px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+font-weight: bolder;
+}
+
+.profile .profile-anchor-text {
+    padding: 4px 8px 6px 20px;
+    font-weight: normal;
+}
+
+.profile a:hover {
+color: #f1f1f1;
+}
+
+
+.description {
+margin-left: 508px; /* Same as the width of the profile side */
+/* padding-left: 10px; */
+background-color: #f1f1f1;
+}
+
+.description a {
+    padding: 24px 8px 0px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #333333;
+    display: block;
+    font-weight: bolder;
+}
+
+.description .description-anchor-text {
+    padding: 4px 8px 6px 20px;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.map-section {
+    padding: 16px 16px 16px 16px;
+}
+
+.map {
+    height: 400px;
+    width: 100%;
+  }
