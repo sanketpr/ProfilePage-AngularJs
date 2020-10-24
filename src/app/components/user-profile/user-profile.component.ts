@@ -1,24 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-// Map imports
 import Map from 'ol/Map';
 import View from 'ol/View';
-import VectorLayer from 'ol/layer/Vector';
-import Style from 'ol/style/Style';
-import Icon from 'ol/style/Icon';
+
 import OSM from 'ol/source/OSM';
 import * as olProj from 'ol/proj';
 import TileLayer from 'ol/layer/Tile';
-import { Address, UserModel } from './user.model';
-import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
+import { Address, UserModel } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.css']
 })
-export class AppComponent {
+export class UserProfileComponent implements OnInit {
 
   user: UserModel;
   imageURL: String;

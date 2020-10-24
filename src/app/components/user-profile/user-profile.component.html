@@ -1,0 +1,27 @@
+<div class="content">
+    <div class="profile" div>
+        <img src={{imageURL}} class="profile-pic-image">
+        
+        <a>Full Name</a>
+        <a class="profile-anchor-text"> {{firstName}} {{lastName}}</a>
+        
+        <a>Email Address</a>
+        <a class="profile-anchor-text">{{email}}</a>
+        
+        <a>Mobile Number</a>
+        <a class="profile-anchor-text">{{phone}}</a>
+        
+        <a>Address</a> 
+        <a class="profile-anchor-text">{{getAddressString()}}</a>
+    </div>
+
+    <div class="description">
+      <a>A little about me:</a> 
+      <a class="description-anchor-text">{{bio}}</a>
+
+      <div class="map-section">
+        <a>I live here</a>
+        <div id="map" class="map"></div>
+      </div>
+    </div>
+</div>
