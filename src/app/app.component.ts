@@ -29,7 +29,7 @@ export class AppComponent {
   address: Address;
   lat: number;
   lon: number;
-  bio: string;
+  bio: String;
 
   constructor(private service: UserService) { }
 
@@ -46,8 +46,8 @@ export class AppComponent {
     this.bio = model.bio;
 
     this.address = model.address;
-    this.lat = +this.address.coordinates.split(",",2)[0];
-    this.lon = +this.address.coordinates.split(",",2)[1];
+    this.lat = +model.address.coordinates.split(",",2)[0];
+    this.lon = +model.address.coordinates.split(",",2)[1];
     this.updateMap()
   }
 
